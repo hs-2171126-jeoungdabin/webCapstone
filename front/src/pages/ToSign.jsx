@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Button, ViewContainer} from "./Styles";
 function WordInput({ word, setWord, fetchVideo }) {
     return (
         <div>
@@ -18,7 +19,7 @@ function WordInput({ word, setWord, fetchVideo }) {
                     margin: "30px"
                 }}
             />
-            <button style={{ margin: "30px"}} onClick={fetchVideo}>확인</button>
+            <button style={Button} onClick={fetchVideo}>확인</button>
         </div>
     );
 }
@@ -40,17 +41,20 @@ function SignVideoPlayer() {
         setVideoFileName(videoTitle);
     };
 
+
     return (
         <div>
         <h2>텍스트 > 수어</h2>
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-
+            <div style={ViewContainer}>
             <WordInput word={word} setWord={setWord} fetchVideo={fetchVideo} />
-
+            </div>
+            <div style={ViewContainer}>
             {videoFileName ? (
                 <div>
                     <h3>영상</h3>
-                    <video style= {{ marginLeft: "30px"}} width="400" controls>
+                    <video style= {{ marginLeft: "30px"}} width="400" controls
+                           muted autoPlay playsInline>
                         <source src={`http://localhost:8080/${videoFileName}`} type="video/mp4" />
                         브라우저가 비디오 태그를 지원하지 않습니다.
                     </video>
@@ -58,6 +62,7 @@ function SignVideoPlayer() {
             ) : (
                 <p>영상이 존재하지 않습니다.</p>
             )}
+            </div>
         </div>
         </div>
     );

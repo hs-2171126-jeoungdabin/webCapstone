@@ -4,14 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
-import VideoTest from './pages/VideoTest';
-import Page from './pages/ToSign';
+import Sign from './pages/ToSign';
+import Quiz from './pages/Quiz.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-      <Page/>
+      <Quiz/>
   </React.StrictMode>
 );
 
