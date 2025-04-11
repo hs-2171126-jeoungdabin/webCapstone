@@ -1,7 +1,11 @@
 package com.backend.server.controller;
 
-import com.backend.server.entity.SignVideo;
-import com.backend.server.repository.SignVideoRepository;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import com.backend.server.entity.SignVideo;
+import com.backend.server.repository.SignVideoRepository;
 
 @RestController
 @RequestMapping("/api")
@@ -29,7 +34,6 @@ public class QuizController {
         SignVideo randomVideo = videos.get(new Random().nextInt(videos.size()));
 
         Map<String, String> response = new HashMap<>();  // name, title
-        response.put("title", randomVideo.getTitle());
         response.put("word", randomVideo.getName());
 
 

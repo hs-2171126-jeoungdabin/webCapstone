@@ -2,17 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Header from "./components/Header.jsx";
+import Footer from "./components/Footer.jsx";
+import reportWebVitals from './reportWebVitals'
+import { BrowserRouter } from "react-router-dom";;
 
-import Sign from './pages/ToSign';
-import Quiz from './pages/Quiz.jsx';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-
-      <Quiz/>
-  </React.StrictMode>
-);
+  <BrowserRouter>
+   <Header attr={"header__wrap"} />
+         <App />
+    <Footer attr={"footer__wrap"} />
+  </BrowserRouter>
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

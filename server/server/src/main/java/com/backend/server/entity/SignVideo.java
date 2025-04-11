@@ -1,9 +1,17 @@
 package com.backend.server.entity;
-import jakarta.persistence.*;
-import lombok.Getter;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+import lombok.Getter; 
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @Entity
 @Table(name = "sign_videos")
@@ -13,20 +21,26 @@ import lombok.Setter;
 public class SignVideo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;    // int ~ long
+    private Long id; // 고유 ID
 
     @Column
-    private String url;    // 영상 url
+    private String name; // 수어 이름
+
+    @Column(name = "display_name")
+    @JsonProperty("displayName")
+    private String displayName; // 이미지 또는 영상 경로
 
     @Column
-    private String title;  // 파일 제목
+    private String category; // 단어 분류 (ex. 동물, 사물, 인사 등)
 
-    @Column
-    private String name;   // 수어 이름
+    @Transient
+    private String imageUrl;
 
-    public SignVideo(String url, String title, String name) {
-        this.url = url;
-        this.title = title;
+    @Transient
+    private String videoUrl;
+    public SignVideo( String name, String displayName, String category) {
         this.name = name;
+        this.displayName = displayName;
+        this.category = category;
     }
 }

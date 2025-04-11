@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {Button, ViewContainer} from "./Styles";
+
 function WordInput({ word, setWord, fetchVideo }) {
     return (
         <div>
@@ -44,7 +45,7 @@ function SignVideoPlayer() {
 
     return (
         <div>
-        <h2>텍스트 > 수어</h2>
+        <h2>텍스트 - 수어</h2>
         <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
             <div style={ViewContainer}>
             <WordInput word={word} setWord={setWord} fetchVideo={fetchVideo} />

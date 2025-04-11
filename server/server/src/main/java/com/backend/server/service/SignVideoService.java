@@ -15,12 +15,6 @@ public class SignVideoService {
 
     private static final Logger logger = LoggerFactory.getLogger(SignVideoService.class);
 
-    public String getVideoUrl(String name) {
-        return signVideoRepository.findByName(name)
-                .map(SignVideo::getUrl)
-                .orElse("영상이 존재하지 않음");
-    }
-
     public String getVideoTitle(String name) {
         logger.info("요청된 단어: " + name);
 
@@ -28,8 +22,8 @@ public class SignVideoService {
                 //.map(SignVideo::getTitle)
                 //.orElse("영상이 존재하지 않음");
                 .map(video -> {
-                    logger.info("ㅇ 영상 찾음: " + video.getTitle());
-                    return video.getTitle();
+                    logger.info("ㅇ 영상 찾음: " + video.getName());
+                    return video.getName();
                 })
                 .orElseGet(() -> {
                     logger.warn("ㄴ 영상 없음: " + name);
